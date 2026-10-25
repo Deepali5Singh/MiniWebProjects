@@ -1,18 +1,109 @@
-<html><!--html tag tells where the page starts and end-->
-    <head><!--define the exact text display on a browser-->
-        <title>Profile Page</title>
-    </head>
-    <body><!---->
-<h1>SignUp Page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+</head>
+<body>
+    <p>     </p><h1>  SignUp </h1>
 
-        <form>
-            <input type="text">Enter you Name</input><br>
-            <input type="number">Enter your age </input>
-            <input type="number">Enter you mobile number </input> <br>
-            <input type="email">enter your email address  </input> <br>
-            <input type="text">Enter you country </input> <br>
-            <input type="text">Enter your city </input> <br>
-            <button>sumbmit</button>
-        </form>
-    </body>
+    <form onsubmit="return InvalidInput();" novalidate>
+        <label for="name">Enter your Name:</label>
+        <input type="text" id="name"><br><br>
+
+        <label for="age">Enter your Age:</label>
+        <input type="number" id="age"><br><br>
+
+        <label for="mobile">Enter your Mobile Number:</label>
+        <input type="tel" id="mobile"><br><br>
+
+        <label for="email">Enter your Email Address:</label>
+        <input type="email" id="email"><br><br>
+
+        <label for="country">Country:</label>
+        <select name="country" id="country">
+            <option value="">--Select Country--</option>
+            <option value="IN">India</option>
+            <option value="US">America</option>
+            <option value="UK">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="CA">Canada</option>
+        </select><br><br>
+
+        <!-- Submit and Reset Buttons -->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <script>
+        function InvalidInput() {
+            const name = document.getElementById('name').value.trim();
+            const ageInput = document.getElementById('age').value.trim();
+            const age = Number(ageInput);
+            const mobile = document.getElementById('mobile').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const country = document.getElementById('country').value;
+
+            // 1. Name Check (5 to 10 characters)
+            if (name === "") {
+                alert("Enter your name");
+                document.getElementById('name').focus();
+                return false;
+            }
+            if (name.length < 5 || name.length > 10) {
+                alert("Name must be between 5 to 10 characters");
+                document.getElementById('name').focus();
+                return false;
+            }
+
+            // 2. Age Check (greater than 15 and less than 50)
+            if (ageInput === "") {
+                alert("Enter the age");
+                document.getElementById('age').focus();
+                return false;
+            }
+            if (age <= 15 || age >= 50) {
+                alert("Age must be greater than 15 and less than 50");
+                document.getElementById('age').focus();
+                return false;
+            }
+
+            // 3. Mobile Check (10 digits)
+            const phonePattern = /^[0-9]{10}$/;
+            if (mobile === "") {
+                alert("Enter your mobile number");
+                document.getElementById('mobile').focus();
+                return false;
+            }
+            if (!phonePattern.test(mobile)) {
+                alert("Enter a valid 10-digit mobile number");
+                document.getElementById('mobile').focus();
+                return false;
+            }
+
+            // 4. Email Check
+            const emailPattern = /^[^@]+@[^@]+\.[a-z]{2,}$/i;
+            if (email === "") {
+                alert("Enter your email address");
+                document.getElementById('email').focus();
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                alert("Enter a valid email address");
+                document.getElementById('email').focus();
+                return false;
+            }
+
+            // 5. Country Check
+            if (country === "") {
+                alert("Choose country from dropdown");
+                document.getElementById('country').focus();
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return false;
+        }
+    </script>
+</body>
 </html>
