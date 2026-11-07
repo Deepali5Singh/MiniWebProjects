@@ -1,0 +1,27 @@
+Create 5 sample user 
+name : Ramesh Sinha
+age : 16
+email :ramesh123@gmail.com
+mobile:0123456789
+country: India
+
+name : Shreya
+age : 18
+email: shreya123@gmail.com
+country: India
+
+name:Sonia
+age: 20
+email: sonia123@gmail.com
+country:India
+mobile:0123456789
+
+name:Kiran
+age:17
+email:kiran123@gmail.com
+country:India
+mobile:0123456789
+
+
+if the user are these try to signup after sign it will redirect it to file upload page
+
