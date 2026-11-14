@@ -1,0 +1,10 @@
+/* profile page */
+
+body {
+text-decoration: none;
+}
+
+.profile h3, h1{
+    text-align: center;
+    background-color: yellow;
+}
